@@ -1,6 +1,6 @@
-# MLN pipeline (iPPD)
+# Instruction-Guided Path Planning with 3D Semantic Maps for Vision-Language Navigation
 
-The implimentation of iPPD pipeline of paper semantic map navigator.
+The source code for pipeline iPPD of language-guided navigation on semantic map.
 
 ## Preparation
 
