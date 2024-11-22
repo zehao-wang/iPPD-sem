@@ -15,7 +15,7 @@ python download_mp.py --task habitat -o data/scene_datasets/mp3d/
 
 #### VLNCE Dataset
 
-debug 8WUmhLawc2A zsNo4HB9uLZ
+Please download from [link](https://drive.google.com/file/d/1fo8F4NKgZDH-bPSdVU3cONAkt5EW-tyr/view) and extract to ```data``` folder
 
 ### B. Preparing Env
 ```bash
