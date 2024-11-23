@@ -108,7 +108,7 @@ def combine_results(dset_h5_path, route_path):
                 ep_id = line['episode_id']
                 traj = line['pts']
             else:
-                import ipdb;ipdb.set_trace() # breakpoint 109
+                print('-------------------') # unexpected missing keys if preprocessed
                 traj_id = line['traj_id']
                 ep_id = line['episode_id']
 

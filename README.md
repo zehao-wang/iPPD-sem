@@ -104,13 +104,11 @@ sh gen_pipeline_unseen.sh
 </details>
 
 ### 3. Model training
-<details>
-<summary>Details</summary>
 
 ```bash
 cd scoring_trainer
 
-# training and evaluation with merged object list requires less reproduction effort 
+# training and evaluation with merged gt object list requires less reproduction effort 
 sh scripts/train_gtobj_eval_unseen_cat.sh # train
 sh scripts/eval_gtobj_eval_unseen_cat.sh  # eval 
 
@@ -128,6 +126,7 @@ python main.py
 
 ```
 
+You can find one reproduced experiment result on iPPD with gt map setting (less dependency required) under the folder ```grid2sim_eval/preprocess_paths```, and you can evaluate this results with nonlearning agent in habitat simulator.
 ```bash
 # modify the input config RESULT_PATH and evaluate the results
 sh exps/eval_nolearning_route.sh
@@ -136,7 +135,6 @@ sh exps/eval_nolearning_route.sh
 
 TODO:
 
-- [ ]  adapt the config of no learning agent to higher habitat-sim
+- [ ]  adapt the config of no learning agent to higher version of habitat-sim
 
 
-</details>
