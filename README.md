@@ -34,22 +34,25 @@ python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
 
 mamba install habitat-sim=0.2.4 headless -c conda-forge -c aihabitat
 
-mamba install -c conda-forge opencv
 pip install open3d==0.14.1
-pip install timm
+
 ```
 
 #### place Mask2Former
 ```bash
 mkdir external_lib 
 cd external_lib
+pip install timm
 git clone https://github.com/facebookresearch/Mask2Former.git
 cd Mask2Former
 cd mask2former/modeling/pixel_decoder/ops
 sh make.sh
 ```
 
-## 1. Pre-exploration Phase and Semantic Map Constructor 
+## Full procedure
+The intermediate data for different step can be found in [link]() for convinient reproduction.
+
+### 1. Pre-exploration Phase and Semantic Map Constructor 
 <details>
 <summary>Details</summary>
 
@@ -69,17 +72,71 @@ sh run_recon.sh
 Here is a sample of reconstructed semantic map
 ![sem map](./assets/semmap_sample.png)
 
+</details>
+
+### 2. Trajectory sampling
+
+<details>
+<summary>Details</summary>
+
+#### place the processed navmap based on semmap
+
+Move the ```preprocessed_navmap``` folder to ```data/preprocessed_navmap```. This is used as a navigation map.
+
+#### set OpenAI keys
+
+```bash
+export API_KEY="..."
+export ORGANIZATION="..."
+```
+
+#### generating data
+Random paths are enough for training trajectories. The validation trajectory should be proposed in two parts, first from random trajectories, another part from particle sampled trajectories.
+
+```bash
+cd traj_sampling
+sh gen_train.sh
+sh gen_pipeline_seen.sh
+sh gen_pipeline_unseen.sh
+
+```
 
 </details>
 
-## 2. Key Component Extraction
+### 3. Model training
+<details>
+<summary>Details</summary>
 
-[x] add extraction code of rule-based extractor
-[x] add extraction code of GPT3.5 extractor
+```bash
+cd scoring_trainer
 
-## 3. generate trajectories
+# training and evaluation with merged object list requires less reproduction effort 
+sh scripts/train_gtobj_eval_unseen_cat.sh # train
+sh scripts/eval_gtobj_eval_unseen_cat.sh  # eval 
 
-> not requiring to generate compasss, might accelerate the generation
+```
 
-Training set do not require pruning
-Evaluation set can be extracted from
+#### evaluate on habitat-sim
+
+Currently only support evaluation on habitat-sim v0.2.2, the config system has huge change due to the update.
+
+```bash
+cd grid2sim_eval/preprocess_paths
+# modify the prediction file in main.py
+# then
+python main.py
+
+```
+
+```bash
+# modify the input config RESULT_PATH and evaluate the results
+sh exps/eval_nolearning_route.sh
+
+```
+
+TODO:
+
+- [ ]  adapt the config of no learning agent to higher habitat-sim
+
+
+</details>

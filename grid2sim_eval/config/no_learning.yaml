@@ -1,0 +1,25 @@
+BASE_TASK_CONFIG_PATH: habitat_extensions/config/vlnce_task.yaml
+TRAINER_NAME: dagger # recollect_trainer
+SIMULATOR_GPU_IDS: [0]
+TORCH_GPU_ID: 0
+NUM_ENVIRONMENTS: 1
+TENSORBOARD_DIR: data/tensorboard_dirs/seq2seq_small
+CHECKPOINT_FOLDER: data/checkpoints/seq2seq_small
+EVAL_CKPT_PATH_DIR: data/checkpoints/seq2seq_small
+RESULTS_DIR: data/checkpoints/seq2seq_small/evals
+
+EVAL:
+  USE_CKPT_CONFIG: False
+  SPLIT: ""
+  EPISODE_COUNT: 99999
+  EVAL_NONLEARNING: True
+  DATA_PATH: ../data/R2R_VLNCE_v1-3_preprocessed/{split}/{split}.json.gz 
+  NONLEARNING:
+    AGENT: GridToSimAgent
+    RESULT_PATH: ""
+    DSET_H5: ""
+    DUMP_DIR: ""
+TASK_CONFIG:
+  DATASET:
+    DATA_PATH: ../data/R2R_VLNCE_v1-3_preprocessed/{split}/{split}.json.gz 
+    SPLIT: ""

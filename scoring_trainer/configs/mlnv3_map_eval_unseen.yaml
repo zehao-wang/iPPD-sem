@@ -1,0 +1,56 @@
+LOG_DIR: './exps'
+SEED: 100
+EVAL_PATH: ""
+USE_DISCRETE_DIR: &dis_dir False
+USE_OBJ_3D_POS: &obj_3dpos True
+TRAINER:
+  MODEL_NAME: PointNet_Transformer_Glove
+  MODEL:
+    ablate_type: "none"
+    discrete_dir: *dis_dir
+    obj_3dpos: *obj_3dpos
+    obj_rot: False
+    EXPORT_EVAL: False
+    SEM_LABEL_DIM: 50
+    POSE_CAT: True
+    OBJ_ENCODER:
+      TYPE: "pointnet"
+      hidden_size: &hidden 768
+    JOINT_ENCODER:
+      pretrained_emb: True # default should be True in my original mln 
+      num_layers: 6
+      num_heads: 12
+      hidden_size: *hidden
+      dim_feedforward: 3076
+      mlm_ratio: 0.1
+
+  EPOCHS: 20
+  EVAL_INTERVAL: 5000
+
+DATASET:
+  NAME: MLNv3_Dataset
+  annt_root: '../mln3d_dset/icra_gen/merged/{split}/{split}'
+  original_annt_path: '../data/R2R_VLNCE_v1-3_preprocessed/{split}/{split}.json.gz'
+  map_root: '../data/scene_datasets/semmap/out_obs'
+  compass_radius: 5 # in meter
+  obs_sample_size: 200 
+  target_type: 'both'
+  discrete_dir: *dis_dir
+  obj_3dpos: *obj_3dpos
+  agent_rel_pos: False
+  gt_obj: False
+
+  EVAL:
+    NAME: "val_unseen"
+    batch_size: 128
+    num_workers: 4
+
+  TEST:
+    NAME: "train"
+    batch_size: 64
+    num_workers: 4
+
+  TRAIN: 
+    NAME: "train"
+    batch_size: 32
+    num_workers: 6
