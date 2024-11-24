@@ -54,11 +54,8 @@ sh make.sh
 ```
 
 ## Full procedure
-The intermediate data for different step can be found in [link]() for convinient reproduction.
 
 ### 1. Pre-exploration Phase and Semantic Map Constructor 
-<details>
-<summary>Details</summary>
 
 #### a. download mask2former ckpt
 Please place the checkpoint [link](https://dl.fbaipublicfiles.com/maskformer/mask2former/coco/panoptic/maskformer2_swin_large_IN21k_384_bs16_100ep/model_final_f07440.pkl) under ```map_generation/meta_data/mask2former_ckpt```
@@ -76,12 +73,10 @@ sh run_recon.sh
 Here is a sample of reconstructed semantic map
 ![sem map](./assets/semmap_sample.png)
 
-</details>
+
 
 ### 2. Trajectory sampling
 
-<details>
-<summary>Details</summary>
 
 #### place the processed navmap based on semmap
 
@@ -104,8 +99,6 @@ sh gen_pipeline_seen.sh
 sh gen_pipeline_unseen.sh
 
 ```
-
-</details>
 
 ### 3. Model training
 
