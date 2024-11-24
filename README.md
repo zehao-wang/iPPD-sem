@@ -17,6 +17,10 @@ python download_mp.py --task habitat -o data/scene_datasets/mp3d/
 
 Please download from [link](https://drive.google.com/file/d/1fo8F4NKgZDH-bPSdVU3cONAkt5EW-tyr/view) and extract to ```data``` folder
 
+#### Reference data
+
+The checkpoint with log and some intermediate data of the experiment can be found [here](https://kuleuven-my.sharepoint.com/:f:/g/personal/zehao_wang_kuleuven_be/EkeGhFoZvAxMn5llIx60Mc4BypIw-3YfmjL3IxFgVILa1Q?e=nsgp2l)
+
 ### B. Preparing Env
 ```bash
 conda create -n mp3d python=3.9 cmake=3.14.0

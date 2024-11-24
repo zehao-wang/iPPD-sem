@@ -1,0 +1,10 @@
+habitat-sim==0.2.4
+transformers==3.0.2
+torchmetrics==0.7.0
+pytorch-lightning==1.5.10
+pytorch==1.13.1
+fastdtw
+jsonlines
+ipdb
+nltk
+networkx
