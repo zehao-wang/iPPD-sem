@@ -126,8 +126,8 @@ You can find one reproduced experiment result on iPPD under the folder ```grid2s
 ```bash
 # modify the input config RESULT_PATH and evaluate the results
 sh exps/eval_nolearning_route.sh
-
 ```
+The results for unseen split evaluated by simulator is recorded in [stats_val_unseen_v3_map_prunend.json](./grid2sim_eval/exps/stats_val_unseen_v3_map_prunend.json)
 
 TODO:
 
