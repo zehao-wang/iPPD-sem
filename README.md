@@ -1,6 +1,6 @@
 # Instruction-Guided Path Planning with 3D Semantic Maps for Vision-Language Navigation
 
-The source code for pipeline iPPD of language-guided navigation on semantic map.
+The source code for pipeline iPPD of language-guided navigation on semantic map. This is an old project in 2022.
 
 ## Preparation
 
