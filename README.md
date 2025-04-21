@@ -40,6 +40,13 @@ mamba install habitat-sim=0.2.4 headless -c conda-forge -c aihabitat
 
 pip install open3d==0.14.1
 
+# install habitat-lab following https://github.com/facebookresearch/habitat-lab/tree/v0.2.4
+git clone --branch stable https://github.com/facebookresearch/habitat-lab.git
+cd habitat-lab
+git checkout v0.2.4
+pip install -e habitat-lab  # install habitat_lab
+pip install -e habitat-baselines  # install habitat_baselines
+
 ```
 
 #### place Mask2Former
