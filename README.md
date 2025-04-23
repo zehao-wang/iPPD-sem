@@ -87,7 +87,7 @@ Here is a sample of reconstructed semantic map
 
 #### place the processed navmap based on semmap
 
-Move the ```preprocessed_navmap``` folder to ```data/preprocessed_navmap```. This is used as a navigation map.
+Move the ```preprocessed_navmap``` (provided in Reference Data section) folder to ```data/preprocessed_navmap```. This is used as a navigation map.
 
 #### set OpenAI keys
 
